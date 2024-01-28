@@ -22,7 +22,7 @@ public class PixService {
         Boolean statusChaveDestino = buscaKeyComponent.verificaSeChaveExiste(pixDTO.getChaveDestino());
         Pix pixEntity = Pix.toEntity(pixDTO);
 
-        if(statusChaveDestino || statusChaveOrigem) {
+        if(statusChaveDestino && statusChaveOrigem) {
             pixEntity.setStatus(PixStatus.EM_PROCESSAMENTO);
         } else {
             pixEntity.setStatus(PixStatus.ERRO);
