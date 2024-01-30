@@ -32,7 +32,7 @@ public class PixService {
             pixEntity.setStatus(PixStatus.ERRO);
         }
         pixRepository.save(pixEntity);
-        kafkaTemplate.send("pix-topic", pixEntity.getIdentifier(), pixEntity);
+        kafkaTemplate.send("pix-topic-partitions", pixEntity.getIdentifier(), pixEntity);
         pixDTO.setPixStatus(pixEntity.getStatus());
         return pixDTO;
     }
